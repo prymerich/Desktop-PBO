@@ -34,18 +34,18 @@ public class form_menu_utama extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btn_pola_makan = new javax.swing.JButton();
+        btn_olahraga = new javax.swing.JButton();
+        btn_pola_tidur = new javax.swing.JButton();
+        btn_jadwal = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btn_cek_imt = new javax.swing.JButton();
+        btn_cek_lemak = new javax.swing.JButton();
+        btn_kegiatan = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
+        btn_informasi = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
@@ -102,49 +102,49 @@ public class form_menu_utama extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(16, 16, 132));
-        jButton2.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Atur Pola Makan");
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_pola_makan.setBackground(new java.awt.Color(16, 16, 132));
+        btn_pola_makan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btn_pola_makan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_pola_makan.setText("Atur Pola Makan");
+        btn_pola_makan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_pola_makan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_pola_makanActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(16, 16, 132));
-        jButton3.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Olahraga Rutin");
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_olahraga.setBackground(new java.awt.Color(16, 16, 132));
+        btn_olahraga.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btn_olahraga.setForeground(new java.awt.Color(255, 255, 255));
+        btn_olahraga.setText("Olahraga Rutin");
+        btn_olahraga.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_olahraga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_olahragaActionPerformed(evt);
             }
         });
 
-        jButton4.setBackground(new java.awt.Color(16, 16, 132));
-        jButton4.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Jaga Pola Tidur");
-        jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton4.setIconTextGap(0);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_pola_tidur.setBackground(new java.awt.Color(16, 16, 132));
+        btn_pola_tidur.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btn_pola_tidur.setForeground(new java.awt.Color(255, 255, 255));
+        btn_pola_tidur.setText("Jaga Pola Tidur");
+        btn_pola_tidur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_pola_tidur.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btn_pola_tidur.setIconTextGap(0);
+        btn_pola_tidur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_pola_tidurActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(16, 16, 132));
-        jButton5.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Buat Jadwal");
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn_jadwal.setBackground(new java.awt.Color(16, 16, 132));
+        btn_jadwal.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
+        btn_jadwal.setForeground(new java.awt.Color(255, 255, 255));
+        btn_jadwal.setText("Buat Jadwal");
+        btn_jadwal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_jadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn_jadwalActionPerformed(evt);
             }
         });
 
@@ -165,50 +165,50 @@ public class form_menu_utama extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(16, 16, 132));
-        jButton7.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Cek IMT");
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn_cek_imt.setBackground(new java.awt.Color(16, 16, 132));
+        btn_cek_imt.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btn_cek_imt.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cek_imt.setText("Cek IMT");
+        btn_cek_imt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_cek_imt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn_cek_imtActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(16, 16, 132));
-        jButton8.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Cek Kadar Lemak");
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn_cek_lemak.setBackground(new java.awt.Color(16, 16, 132));
+        btn_cek_lemak.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        btn_cek_lemak.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cek_lemak.setText("Cek Kadar Lemak");
+        btn_cek_lemak.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_cek_lemak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btn_cek_lemakActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(16, 16, 132));
-        jButton9.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Kegiatan Lain");
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btn_kegiatan.setBackground(new java.awt.Color(16, 16, 132));
+        btn_kegiatan.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
+        btn_kegiatan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_kegiatan.setText("Kegiatan Lain");
+        btn_kegiatan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_kegiatan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btn_kegiatanActionPerformed(evt);
             }
         });
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ICON");
 
-        jButton10.setBackground(new java.awt.Color(16, 16, 132));
-        jButton10.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Cari Informasi");
-        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btn_informasi.setBackground(new java.awt.Color(16, 16, 132));
+        btn_informasi.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
+        btn_informasi.setForeground(new java.awt.Color(255, 255, 255));
+        btn_informasi.setText("Cari Informasi");
+        btn_informasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btn_informasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btn_informasiActionPerformed(evt);
             }
         });
 
@@ -238,16 +238,16 @@ public class form_menu_utama extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btn_pola_makan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_olahraga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_pola_tidur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_cek_lemak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_cek_imt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jButton10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_informasi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_kegiatan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_jadwal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,31 +268,31 @@ public class form_menu_utama extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btn_pola_makan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btn_olahraga)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(btn_pola_tidur)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(btn_jadwal))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
+                .addComponent(btn_cek_imt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton8)
+                .addComponent(btn_cek_lemak)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9))
+                    .addComponent(btn_kegiatan))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10))
+                    .addComponent(btn_informasi))
                 .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -317,42 +317,50 @@ public class form_menu_utama extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_pola_makanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pola_makanActionPerformed
+        this.dispose();
         new menu_pola_makan().setVisible(true);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_pola_makanActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_olahragaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_olahragaActionPerformed
+        this.dispose();
         new menu_latihan_olahraga().setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_olahragaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_pola_tidurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pola_tidurActionPerformed
+        this.dispose();
         new menu_pola_tidur().setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_pola_tidurActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btn_jadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jadwalActionPerformed
+        this.dispose();
+        new menu_jadwal().setVisible(true);
+    }//GEN-LAST:event_btn_jadwalActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void btn_cek_imtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cek_imtActionPerformed
+        this.dispose();
+        new menu_cek_imt().setVisible(true);
+    }//GEN-LAST:event_btn_cek_imtActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void btn_cek_lemakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cek_lemakActionPerformed
+        this.dispose();
+        new menu_cek_lemak().setVisible(true);
+    }//GEN-LAST:event_btn_cek_lemakActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void btn_kegiatanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kegiatanActionPerformed
+        this.dispose();
+        new menu_rekomendasi_kegiatan().setVisible(true);
+    }//GEN-LAST:event_btn_kegiatanActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void btn_informasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informasiActionPerformed
+        this.dispose();
+        new menu_informasi().setVisible(true);
+    }//GEN-LAST:event_btn_informasiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,16 +398,16 @@ public class form_menu_utama extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cek_imt;
+    private javax.swing.JButton btn_cek_lemak;
+    private javax.swing.JButton btn_informasi;
+    private javax.swing.JButton btn_jadwal;
+    private javax.swing.JButton btn_kegiatan;
+    private javax.swing.JButton btn_olahraga;
+    private javax.swing.JButton btn_pola_makan;
+    private javax.swing.JButton btn_pola_tidur;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
