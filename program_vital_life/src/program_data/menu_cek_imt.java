@@ -4,18 +4,27 @@
  */
 package program_data;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cyber
  */
 public class menu_cek_imt extends javax.swing.JFrame {
-
+    Connection con = null;
+    Statement st = null;
+    
     /**
      * Creates new form menu_cek_imt
      */
     public menu_cek_imt() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,22 +212,38 @@ public class menu_cek_imt extends javax.swing.JFrame {
     private void btnHitungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungActionPerformed
         float tinggi_b, berat_b, tb_meter, hasil;
         
-        tinggi_b = Integer.valueOf(txtTinggi.getText());
-        berat_b = Integer.valueOf(txtBerat.getText());
-        
-        tb_meter = tinggi_b / 100.0f;
-        hasil = berat_b/(tb_meter * tb_meter);
-        
-        if (hasil <= 18.5) {
-            txtHasil.setText(String.format("%.2f", hasil));
-            txtSaran.setText(String.valueOf("Anda Kurang Gizi"));
-        } 
-        else if ((hasil > 18.5) && (hasil <= 25.0)){
-            txtHasil.setText(String.format("%.2f", hasil));
-            txtSaran.setText(String.valueOf("Berat Badan Anda Ideal"));
-        } else {
-            txtHasil.setText(String.format("%.2f",hasil));
-            txtSaran.setText(String.valueOf("Anda Beresiko Terkena Obesitas"));
+        try {
+            if(txtTinggi.getText().equals("") || txtBerat.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Data tidak boleh kosong", "Pesan", JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                tinggi_b = Integer.valueOf(txtTinggi.getText());
+                berat_b = Integer.valueOf(txtBerat.getText());
+
+                tb_meter = tinggi_b / 100.0f;
+                hasil = berat_b/(tb_meter * tb_meter);
+
+                if (hasil <= 18.5) {
+                    txtHasil.setText(String.format("%.2f", hasil));
+                    txtSaran.setText(String.valueOf("Anda Kurang Gizi"));
+                } 
+                else if ((hasil > 18.5) && (hasil <= 25.0)){
+                    txtHasil.setText(String.format("%.2f", hasil));
+                    txtSaran.setText(String.valueOf("Berat Badan Anda Ideal"));
+                } else {
+                    txtHasil.setText(String.format("%.2f",hasil));
+                    txtSaran.setText(String.valueOf("Anda Beresiko Terkena Obesitas"));
+                }
+               
+               Class.forName("com.mysql.cj.jdbc.Driver");
+               con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+               st = con.createStatement();
+               String simpan = "INSERT INTO cek_imt(tinggi, berat, hasil, saran) VALUES ('"+txtTinggi.getText()+"', '"+txtBerat.getText()+"', '"+txtHasil.getText()+"', '"+txtSaran.getText()+"')";
+               st = con.createStatement();
+               int SA = st.executeUpdate(simpan);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Pesan", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnHitungActionPerformed
 

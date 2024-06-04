@@ -4,12 +4,19 @@
  */
 package program_data;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cyber
  */
 public class menu_cek_lemak extends javax.swing.JFrame {
-
+    Connection con = null;
+    Statement st = null;
+    
     /**
      * Creates new form menu_cek_lemak
      */
@@ -262,66 +269,81 @@ public class menu_cek_lemak extends javax.swing.JFrame {
         float imt;
         int usia;
         
-        tinggi_b = Integer.valueOf(txtTinggi.getText());
-        berat_b = Integer.valueOf(txtBerat.getText());
-        usia = Integer.valueOf(txtUsia.getText());
-        
-        
-        tb_meter = tinggi_b / 100.0f;
-        imt = berat_b/(tb_meter * tb_meter);
-        
-        String jenis_kelamin = (String) cmbGender.getSelectedItem();
-        
-        
-        if (jenis_kelamin.equals("Laki-laki")){
-          
-            hasil_l = (float) ((1.2*imt)+((0.23*usia)- 5.4- 10.8));
-            
-            if((hasil_l > 1.0) && (hasil_l <= 14.0 )){
-                txtHasil.setText(String.format("%.2f", hasil_l));
-                txtSaran.setText(String.valueOf("Anda Kekurangan Lemak"));
-            }
-            else if ((hasil_l > 14.0) && (hasil_l <= 20.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_l));
-                txtSaran.setText(String.valueOf("Kadar Lemak anda Cukup"));
-            }
-            else if ((hasil_l > 20.0) && (hasil_l <= 25.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_l));
-                txtSaran.setText(String.valueOf("Anda Sangat Bugar"));
-            }
-            else if ((hasil_l > 25.0) && (hasil_l <= 31.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_l));
-                txtSaran.setText(String.valueOf("Kadar Lemak Anda Lebih Dari Cukup"));
+        try {
+            if(cmbGender.getSelectedItem().equals("") || txtUsia.getText().equals("") || txtTinggi.getText().equals("") || txtBerat.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Data tidak boleh kosong", "Pesan", JOptionPane.ERROR_MESSAGE);
             }
             else {
-                txtHasil.setText(String.format("%.2f",hasil_l));
-                txtSaran.setText(String.valueOf("Anda Obesitas"));
+                tinggi_b = Integer.valueOf(txtTinggi.getText());
+                berat_b = Integer.valueOf(txtBerat.getText());
+                usia = Integer.valueOf(txtUsia.getText());
+
+
+                tb_meter = tinggi_b / 100.0f;
+                imt = berat_b/(tb_meter * tb_meter);
+
+                String jenis_kelamin = (String) cmbGender.getSelectedItem();
+
+
+                if (jenis_kelamin.equals("Laki-laki")){
+
+                    hasil_l = (float) ((1.2*imt)+((0.23*usia)- 5.4- 10.8));
+
+                    if((hasil_l > 1.0) && (hasil_l <= 14.0 )){
+                        txtHasil.setText(String.format("%.2f", hasil_l));
+                        txtSaran.setText(String.valueOf("Anda Kekurangan Lemak"));
+                    }
+                    else if ((hasil_l > 14.0) && (hasil_l <= 20.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_l));
+                        txtSaran.setText(String.valueOf("Kadar Lemak anda Cukup"));
+                    }
+                    else if ((hasil_l > 20.0) && (hasil_l <= 25.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_l));
+                        txtSaran.setText(String.valueOf("Anda Sangat Bugar"));
+                    }
+                    else if ((hasil_l > 25.0) && (hasil_l <= 31.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_l));
+                        txtSaran.setText(String.valueOf("Kadar Lemak Anda Lebih Dari Cukup"));
+                    }
+                    else {
+                        txtHasil.setText(String.format("%.2f",hasil_l));
+                        txtSaran.setText(String.valueOf("Anda Obesitas"));
+                    }
+
+                }
+                else {   
+                    hasil_p = (float) ((1.2*imt)+((0.23*usia)- 5.4));
+
+                     if((hasil_p > 1.0) && (hasil_p <= 14.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_p));
+                        txtSaran.setText(String.valueOf("Anda Kekurangan Lemak"));
+                    }
+                    else if ((hasil_p > 0.14) && (hasil_p <= 20.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_p));
+                        txtSaran.setText(String.valueOf("Kadar Lemak anda Cukup"));
+                    }
+                    else if ((hasil_p > 20.0) && (hasil_p <= 25.0 )){
+                        txtHasil.setText(String.format("%.2f",hasil_p));
+                        txtSaran.setText(String.valueOf("Anda Sangat Bugar"));
+                    }
+                    else if ((hasil_p > 25.0) && (hasil_p <= 31.0)){
+                        txtHasil.setText(String.format("%.2f",hasil_p));
+                        txtSaran.setText(String.valueOf("Kadar Lemak Anda Lebih Dari Cukup"));
+                    }
+                    else {
+                        txtHasil.setText(String.format("%.2f",hasil_p));
+                        txtSaran.setText(String.valueOf("Anda Obesitas"));
+                    }
+                }
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+                st = con.createStatement();
+                String simpan = "INSERT INTO cek_lemak(jenis_kelamin, usia, tinggi, berat, hasil, saran) VALUES ('"+cmbGender.getSelectedItem()+"', '"+txtUsia.getText()+"', '"+txtTinggi.getText()+"', '"+txtBerat.getText()+"', '"+txtHasil.getText()+"', '"+txtSaran.getText()+"')";
+                st = con.createStatement();
+                int SA = st.executeUpdate(simpan);
             }
-          
-        }
-        else {   
-            hasil_p = (float) ((1.2*imt)+((0.23*usia)- 5.4));
-            
-             if((hasil_p > 1.0) && (hasil_p <= 14.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_p));
-                txtSaran.setText(String.valueOf("Anda Kekurangan Lemak"));
-            }
-            else if ((hasil_p > 0.14) && (hasil_p <= 20.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_p));
-                txtSaran.setText(String.valueOf("Kadar Lemak anda Cukup"));
-            }
-            else if ((hasil_p > 20.0) && (hasil_p <= 25.0 )){
-                txtHasil.setText(String.format("%.2f",hasil_p));
-                txtSaran.setText(String.valueOf("Anda Sangat Bugar"));
-            }
-            else if ((hasil_p > 25.0) && (hasil_p <= 31.0)){
-                txtHasil.setText(String.format("%.2f",hasil_p));
-                txtSaran.setText(String.valueOf("Kadar Lemak Anda Lebih Dari Cukup"));
-            }
-            else {
-                txtHasil.setText(String.format("%.2f",hasil_p));
-                txtSaran.setText(String.valueOf("Anda Obesitas"));
-            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Pesan", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnHitungActionPerformed
 
