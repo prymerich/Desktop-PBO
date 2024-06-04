@@ -4,12 +4,26 @@
  */
 package program_data;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author Cyber
  */
 public class menu_pola_tidur extends javax.swing.JFrame {
-
+    static int detik = 0;
+    static int menit = 0;
+    static int jam = 0;
+    
+    static boolean state = true;
+    
+    static LocalTime jam_tidur;
+    static LocalTime jam_bangun;
+    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        
+    
     /**
      * Creates new form menu_pola_tidur
      */
@@ -29,6 +43,17 @@ public class menu_pola_tidur extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnMulai = new rojerusan.RSMaterialButtonCircle();
+        jLabel3 = new javax.swing.JLabel();
+        lb_tidur = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        lb_bangun = new javax.swing.JLabel();
+        lb_jam = new javax.swing.JLabel();
+        lb_detik = new javax.swing.JLabel();
+        lb_menit = new javax.swing.JLabel();
+        btnReset = new javax.swing.JButton();
+        btnBerhenti = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,17 +96,135 @@ public class menu_pola_tidur extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        btnMulai.setText("MULAI");
+        btnMulai.setFont(new java.awt.Font("Montserrat ExtraBold", 0, 32)); // NOI18N
+        btnMulai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMulaiActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cek Pola Tidur Anda");
+
+        lb_tidur.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        lb_tidur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lb_tidur.setText("00:00:00");
+
+        jLabel5.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel5.setText("Jam Tidur");
+
+        jLabel6.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        jLabel6.setText("Jam Bangun");
+
+        lb_bangun.setFont(new java.awt.Font("Poppins Medium", 0, 16)); // NOI18N
+        lb_bangun.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lb_bangun.setText("00:00:00");
+
+        lb_jam.setFont(new java.awt.Font("Montserrat SemiBold", 0, 36)); // NOI18N
+        lb_jam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_jam.setText("00 :");
+
+        lb_detik.setFont(new java.awt.Font("Montserrat SemiBold", 0, 36)); // NOI18N
+        lb_detik.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_detik.setText("00");
+
+        lb_menit.setFont(new java.awt.Font("Montserrat SemiBold", 0, 36)); // NOI18N
+        lb_menit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lb_menit.setText("00 :");
+
+        btnReset.setBackground(new java.awt.Color(16, 74, 132));
+        btnReset.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+
+        btnBerhenti.setBackground(new java.awt.Color(16, 74, 132));
+        btnBerhenti.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
+        btnBerhenti.setForeground(new java.awt.Color(255, 255, 255));
+        btnBerhenti.setText("Berhenti");
+        btnBerhenti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBerhentiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(25, 25, 25)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_tidur, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_bangun, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(lb_jam, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(lb_menit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_detik, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBerhenti, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addComponent(btnMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 491, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnMulai, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lb_tidur, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lb_bangun, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_jam, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lb_detik, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lb_menit, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBerhenti)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnReset)
+                        .addContainerGap(48, Short.MAX_VALUE))))
         );
 
         pack();
@@ -91,6 +234,66 @@ public class menu_pola_tidur extends javax.swing.JFrame {
         this.dispose();
         new form_menu_utama().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnMulaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMulaiActionPerformed
+        // TODO add your handling code here:
+        jam_tidur = LocalTime.now();
+        lb_tidur.setText(""+jam_tidur.format(formatter));
+        state = true;
+        Thread t = new Thread() {
+            public void run() {
+                for (;;) {
+                    if (state == true) {
+                        try {
+                            sleep(1000);
+                            
+                            if (detik>60) {
+                                detik=0;
+                                menit++;
+                            }
+                            if (menit>60) {
+                                menit=0;
+                                jam++;
+                            }
+                            
+                            lb_detik.setText(detik+"");
+                            
+                            detik++;
+                            lb_menit.setText(menit+" : ");
+                            lb_jam.setText(jam+" : ");
+                            
+                        } catch (Exception e) {
+                        
+                        }
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }   
+        };
+        t.start();
+    }//GEN-LAST:event_btnMulaiActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        state = false;
+        
+        jam = 0;
+        menit = 0;
+        detik = 0;
+        
+        lb_jam.setText("00 : ");
+        lb_menit.setText("00 : ");
+        lb_detik.setText("00");
+    }//GEN-LAST:event_btnResetActionPerformed
+
+    private void btnBerhentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBerhentiActionPerformed
+        // TODO add your handling code here:
+        state = false;
+        jam_bangun = LocalTime.now();
+        lb_bangun.setText(""+jam_bangun.format(formatter));
+    }//GEN-LAST:event_btnBerhentiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,8 +331,19 @@ public class menu_pola_tidur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBerhenti;
+    private rojerusan.RSMaterialButtonCircle btnMulai;
+    private javax.swing.JButton btnReset;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lb_bangun;
+    private javax.swing.JLabel lb_detik;
+    private javax.swing.JLabel lb_jam;
+    private javax.swing.JLabel lb_menit;
+    private javax.swing.JLabel lb_tidur;
     // End of variables declaration//GEN-END:variables
 }
