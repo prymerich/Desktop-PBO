@@ -5,6 +5,7 @@
 package program_data;
 
 import java.time.LocalTime;
+import java.time.Duration;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -325,6 +326,11 @@ public class menu_pola_tidur extends javax.swing.JFrame {
         lb_jam.setText("00 : ");
         lb_menit.setText("00 : ");
         lb_detik.setText("00");
+        
+        lb_tidur.setText("00:00:00");
+        lb_bangun.setText("00:00:00");
+        
+        lb_durasi.setText("00:00:00");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnBerhentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBerhentiActionPerformed
@@ -332,6 +338,15 @@ public class menu_pola_tidur extends javax.swing.JFrame {
         state = false;
         jam_bangun = LocalTime.now();
         lb_bangun.setText(""+jam_bangun.format(formatter));
+        
+        Duration durasi = Duration.between(jam_tidur, jam_bangun);
+        long jam = durasi.toHours();
+        long menit = durasi.toMinutesPart();
+        long detik = durasi.toSecondsPart();
+        
+        String durationFormatted = String.format("%02d:%02d:%02d", jam, menit, detik);
+        
+        lb_durasi.setText(""+durationFormatted);
     }//GEN-LAST:event_btnBerhentiActionPerformed
 
     /**
