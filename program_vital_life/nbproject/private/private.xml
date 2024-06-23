@@ -3,11 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Cyber/Downloads/Semester%202/Kuliah/Pemrograman%20Berorientasi%20Obyek/Tugas%20Besar/Desktop-PBO/program_vital_life/src/program_data/form_registrasi.java</file>
             <file>file:/C:/Users/Cyber/Downloads/Semester%202/Kuliah/Pemrograman%20Berorientasi%20Obyek/Tugas%20Besar/Desktop-PBO/program_vital_life/src/program_data/form_menu_utama.java</file>
             <file>file:/C:/Users/Cyber/Downloads/Semester%202/Kuliah/Pemrograman%20Berorientasi%20Obyek/Tugas%20Besar/Desktop-PBO/program_vital_life/src/program_data/menu_pola_tidur.java</file>
             <file>file:/C:/Users/Cyber/Downloads/Semester%202/Kuliah/Pemrograman%20Berorientasi%20Obyek/Tugas%20Besar/Desktop-PBO/program_vital_life/src/program_data/menu_cek_imt.java</file>
             <file>file:/C:/Users/Cyber/Downloads/Semester%202/Kuliah/Pemrograman%20Berorientasi%20Obyek/Tugas%20Besar/Desktop-PBO/program_vital_life/src/program_data/menu_cek_lemak.java</file>
+=======
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/form_menu_utama.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/menu_cek_imt.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/menu_latihan_olahraga.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/form_login.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/Tes.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/form_registrasi.java</file>
+            <file>file:/C:/Users/ACER/Documents/Desktop-PBO/program_vital_life/src/program_data/menu_cek_lemak.java</file>
+>>>>>>> 7fcd28a2236cec0744fc77f393bfc6af1ce09c91
         </group>
     </open-files>
 </project-private>
