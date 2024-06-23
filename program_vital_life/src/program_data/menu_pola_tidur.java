@@ -7,12 +7,19 @@ package program_data;
 import java.time.LocalTime;
 import java.time.Duration;
 import java.time.format.DateTimeFormatter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Cyber
  */
 public class menu_pola_tidur extends javax.swing.JFrame {
+    Connection con = null;
+    Statement st = null;
+    
     static int detik = 0;
     static int menit = 0;
     static int jam = 0;
