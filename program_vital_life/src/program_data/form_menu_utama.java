@@ -328,7 +328,7 @@ public class form_menu_utama extends javax.swing.JFrame {
 
     private void btn_pola_tidurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pola_tidurActionPerformed
         this.dispose();
-        new menu_pola_tidur().setVisible(true);
+        new menu_cek_pola_tidur().setVisible(true);
     }//GEN-LAST:event_btn_pola_tidurActionPerformed
 
     private void btn_jadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jadwalActionPerformed
