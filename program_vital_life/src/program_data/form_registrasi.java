@@ -206,7 +206,7 @@ public class form_registrasi extends javax.swing.JFrame {
                Class.forName("com.mysql.cj.jdbc.Driver");
                con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
                st = con.createStatement();
-               String simpan = "INSERT INTO logs_in VALUES ('"+txtuser.getText()+"', '"+String.valueOf(txtpass.getPassword())+"', '"+txtnama.getText()+"')";
+               String simpan = "INSERT INTO logs_in (username, password, name) VALUES ('"+txtuser.getText()+"', '"+String.valueOf(txtpass.getPassword())+"', '"+txtnama.getText()+"')";
                st = con.createStatement();
                int SA = st.executeUpdate(simpan);
                JOptionPane.showMessageDialog(this, "Registrasi berhasil");
