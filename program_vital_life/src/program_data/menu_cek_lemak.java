@@ -67,7 +67,7 @@ public class menu_cek_lemak extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(16, 74, 132));
         jButton1.setFont(new java.awt.Font("Montserrat Medium", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Back");
+        jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,8 +80,8 @@ public class menu_cek_lemak extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(307, 307, 307)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(412, 412, 412))
         );
@@ -141,6 +141,11 @@ public class menu_cek_lemak extends javax.swing.JFrame {
 
         txtHasil.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         txtHasil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHasilActionPerformed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Montserrat Medium", 0, 16)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -208,7 +213,7 @@ public class menu_cek_lemak extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(30, 30, 30)
                                     .addComponent(txtSaran, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,6 +356,10 @@ public class menu_cek_lemak extends javax.swing.JFrame {
     private void cmbGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGenderActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbGenderActionPerformed
+
+    private void txtHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHasilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHasilActionPerformed
 
     /**
      * @param args the command line arguments

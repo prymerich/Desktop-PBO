@@ -7,7 +7,9 @@ package program_data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
+//import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class form_login extends javax.swing.JFrame {
     Connection conn = null;
-    Statement st = null;
+//    Statement st = null;
     
 
     /**
@@ -28,7 +30,7 @@ public class form_login extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
-            st = conn.createStatement();
+//            st = conn.createStatement();
             JOptionPane.showMessageDialog(null, "Berhasil Terkoneksi");    
         }
         catch(Exception ex){
@@ -44,18 +46,35 @@ public class form_login extends javax.swing.JFrame {
                 txtuser.requestFocus();
                 hapuslayar();     
             } else {
-                st = conn.createStatement();
-                String sql = ("SELECT * FROM logs_in WHERE username = '"+txtuser.getText()+"' AND password = '"+String.valueOf(txtpass.getPassword())+"'");
-                ResultSet rs = st.executeQuery(sql);
+                String sql = "SELECT id FROM logs_in WHERE username = ? AND password = ?";
+                PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setString(1, txtuser.getText());
+                pst.setString(2, String.valueOf(txtpass.getPassword()));
+                
+                ResultSet rs = pst.executeQuery();
                 if (rs.next()) {
+                    int userId = rs.getInt("id");
+                    Session.setUserId(userId);
+                    
                     this.dispose();
-                    new form_menu_utama().setVisible(true);
+                    new menu_utama_user().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Username dan Password salah\nAtau akun belum terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
                     hapuslayar();
                 }
+                
+//                st = conn.createStatement();
+//                String sql = ("SELECT * FROM logs_in WHERE username = '"+txtuser.getText()+"' AND password = '"+String.valueOf(txtpass.getPassword())+"'");
+//                ResultSet rs = st.executeQuery(sql);
+//                if (rs.next()) {
+//                    this.dispose();
+//                    new form_menu_utama().setVisible(true);
+//                } else {
+//                    JOptionPane.showMessageDialog(rootPane, "Username dan Password salah\nAtau akun belum terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
+//                    hapuslayar();
+//                }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -189,27 +208,27 @@ public class form_login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtuserActionPerformed
 
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-
-        try {
-            if(txtuser.getText().equals("") || txtpass.getPassword().equals("")) {
-                JOptionPane.showMessageDialog(rootPane, "Data tidak boleh kosong", "Pesan", JOptionPane.ERROR_MESSAGE);
-                txtuser.requestFocus();
-                hapuslayar();
-            } else {
-                st = conn.createStatement();
-                String sql = ("SELECT * FROM logs_in WHERE username = '"+txtuser.getText()+"' AND password = '"+String.valueOf(txtpass.getPassword())+"'");
-                ResultSet rs = st.executeQuery(sql);
-                if(rs.next()) {
-                    this.dispose();
-                    new form_menu_utama().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Username dan Password salah\nAtau akun belum terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
-                    hapuslayar();
-                }
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+        cek_log_in();
+//        try {
+//            if(txtuser.getText().equals("") || txtpass.getPassword().equals("")) {
+//                JOptionPane.showMessageDialog(rootPane, "Data tidak boleh kosong", "Pesan", JOptionPane.ERROR_MESSAGE);
+//                txtuser.requestFocus();
+//                hapuslayar();
+//            } else {
+//                st = conn.createStatement();
+//                String sql = ("SELECT * FROM logs_in WHERE username = '"+txtuser.getText()+"' AND password = '"+String.valueOf(txtpass.getPassword())+"'");
+//                ResultSet rs = st.executeQuery(sql);
+//                if(rs.next()) {
+//                    this.dispose();
+//                    new form_menu_utama().setVisible(true);
+//                } else {
+//                    JOptionPane.showMessageDialog(rootPane, "Username dan Password salah\nAtau akun belum terdaftar", "Pesan", JOptionPane.ERROR_MESSAGE);
+//                    hapuslayar();
+//                }
+//            }
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
