@@ -113,6 +113,11 @@ public class menu_cek_imt extends javax.swing.JFrame {
 
         txtHasil.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         txtHasil.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHasil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHasilActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Montserrat Medium", 0, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -246,6 +251,10 @@ public class menu_cek_imt extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Pesan", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnHitungActionPerformed
+
+    private void txtHasilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHasilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHasilActionPerformed
 
     /**
      * @param args the command line arguments
