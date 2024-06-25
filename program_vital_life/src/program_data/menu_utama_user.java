@@ -4,10 +4,10 @@
  */
 package program_data;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 //import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -17,12 +17,140 @@ import javax.swing.JOptionPane;
  * @author Cyber
  */
 public class menu_utama_user extends javax.swing.JFrame {
-
+//    private Connection con;
+    
     /**
      * Creates new form menu_utama_user
      */
     public menu_utama_user() {
         initComponents();
+        String username = get_username(Session.getUserId());
+        lb_sapa_nama.setText("Halo, " + username + "!");
+        
+        userLogin(Session.getUserId());
+    }
+    
+    private String get_username(int userId) {
+        String username = "";
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try {
+//            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+            
+            String sql = "SELECT username FROM logs_in WHERE id = ?";
+            
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, userId);
+            
+            rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                username = rs.getString("username");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+        }
+        return username;
+    }
+    
+    private void ambil_data_user(int userId) {
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+            String sql = "SELECT jenis_kelamin, tinggi, berat, usia FROM logs_in WHERE id = ?";
+            
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, userId);
+            
+            rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                String jenis_kelamin = rs.getString("jenis_kelamin");
+                int tinggi = rs.getInt("tinggi");
+                int berat = rs.getInt("berat");
+                int usia = rs.getInt("usia");
+                
+                cek_imt(tinggi, berat);
+                cek_kadar_lemak(jenis_kelamin, tinggi, berat, usia);
+            } else {
+                JOptionPane.showMessageDialog(null, "User tidak ditemukan.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Database error!", "Error", JOptionPane.ERROR_MESSAGE);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    
+    public void cek_imt(int tinggi_b, int berat_b) {
+        float tb_meter = tinggi_b / 100.0f;
+        float hasil = berat_b / (tb_meter * tb_meter);
+        
+        if (hasil <= 18.5) {
+            txtHasil_imt.setText(String.format("%.2f", hasil));
+            txtSaran_imt.setText("Anda Kurang Gizi");
+        } else if (hasil > 18.5 && hasil <= 25.0) {
+            txtHasil_imt.setText(String.format("%.2f", hasil));
+            txtSaran_imt.setText("Berat Badan Anda Ideal");
+        } else {
+            txtHasil_imt.setText(String.format("%.2f", hasil));
+            txtSaran_imt.setText("Anda Berisiko Terkenal Obesitas");
+        }
+    }
+    
+    public void cek_kadar_lemak(String jenis_kelamin, int tinggi_b, int berat_b, int usia) {
+        float tb_meter = tinggi_b / 100.0f;
+        float imt = berat_b / (tb_meter * tb_meter);
+        float hasil;
+        
+        if (jenis_kelamin.equals("Laki-laki")) {
+            hasil = (float) ((1.2 * imt) + ((0.23 * usia) - 5.4 - 10.8));
+        } else {
+            hasil = (float) ((1.2 * imt) + ((0.23 * usia) - 5.4));
+        }
+        
+        if (hasil > 1.0 && hasil <= 14.0) {
+            txtHasil_lemak.setText(String.format("%.2f", hasil));
+            txtSaran_lemak.setText("Anda Kekurangan Lemak");
+        } else if (hasil > 14.0 && hasil <= 20.0) {
+            txtHasil_lemak.setText(String.format("%.2f", hasil));
+            txtSaran_lemak.setText("Kadar Lemak Anda Cukup");
+        } else if (hasil > 20.0 && hasil <= 25.0) {
+            txtHasil_lemak.setText(String.format("%.2f", hasil));
+            txtSaran_lemak.setText("Anda Sangat Bugar");
+        } else if (hasil > 25.0 && hasil <= 31.0) {
+            txtHasil_lemak.setText(String.format("%.2f", hasil));
+            txtSaran_lemak.setText("Kadar Lemak Anda Lebih Dari Cukup");
+        } else {
+            txtHasil_lemak.setText(String.format("%.2f", hasil));
+            txtSaran_lemak.setText("Anda Obesitas");
+        }
+    }
+    
+    public void userLogin(int userId) {
+        ambil_data_user(userId);
     }
 
     /**
@@ -38,6 +166,13 @@ public class menu_utama_user extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        lb_sapa_nama = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtHasil_lemak = new javax.swing.JTextField();
+        txtSaran_imt = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtHasil_imt = new javax.swing.JTextField();
+        txtSaran_lemak = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btn_pola_makan = new javax.swing.JButton();
         btn_olahraga = new javax.swing.JButton();
@@ -62,6 +197,8 @@ public class menu_utama_user extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("VitalLife");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel3.setBackground(new java.awt.Color(16, 74, 132));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -75,16 +212,83 @@ public class menu_utama_user extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
+        lb_sapa_nama.setFont(new java.awt.Font("Poppins Medium", 0, 24)); // NOI18N
+        lb_sapa_nama.setText("Halo, ");
+
+        jLabel10.setFont(new java.awt.Font("Montserrat Medium", 0, 16)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("Indeks Massa Tubuh Anda :");
+
+        txtHasil_lemak.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtHasil_lemak.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtHasil_lemak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHasil_lemakActionPerformed(evt);
+            }
+        });
+
+        txtSaran_imt.setBackground(new java.awt.Color(245, 245, 245));
+        txtSaran_imt.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtSaran_imt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtSaran_imt.setBorder(null);
+
+        jLabel12.setFont(new java.awt.Font("Montserrat Medium", 0, 16)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText("Kadar Lemak Tubuh Anda :");
+
+        txtHasil_imt.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        txtHasil_imt.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtHasil_imt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHasil_imtActionPerformed(evt);
+            }
+        });
+
+        txtSaran_lemak.setBackground(new java.awt.Color(245, 245, 245));
+        txtSaran_lemak.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        txtSaran_lemak.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtSaran_lemak.setBorder(null);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtSaran_lemak, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_sapa_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtHasil_lemak, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtHasil_imt))
+                        .addComponent(txtSaran_imt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lb_sapa_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(175, 175, 175)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHasil_imt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtSaran_imt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHasil_lemak, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSaran_lemak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -240,25 +444,25 @@ public class menu_utama_user extends javax.swing.JFrame {
                     .addComponent(btn_pola_makan)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_olahraga)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_olahraga))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_pola_tidur)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pola_tidur))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btn_jadwal)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_kegiatan))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_kegiatan)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_informasi))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_informasi)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(158, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -308,6 +512,14 @@ public class menu_utama_user extends javax.swing.JFrame {
         new Artikel().setVisible(true);
     }//GEN-LAST:event_btn_informasiActionPerformed
 
+    private void txtHasil_lemakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHasil_lemakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHasil_lemakActionPerformed
+
+    private void txtHasil_imtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHasil_imtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHasil_imtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -351,6 +563,8 @@ public class menu_utama_user extends javax.swing.JFrame {
     private javax.swing.JButton btn_pola_makan;
     private javax.swing.JButton btn_pola_tidur;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -362,5 +576,10 @@ public class menu_utama_user extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lb_sapa_nama;
+    private javax.swing.JTextField txtHasil_imt;
+    private javax.swing.JTextField txtHasil_lemak;
+    private javax.swing.JTextField txtSaran_imt;
+    private javax.swing.JTextField txtSaran_lemak;
     // End of variables declaration//GEN-END:variables
 }
