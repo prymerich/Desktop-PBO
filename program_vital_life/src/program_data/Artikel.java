@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Artikel extends javax.swing.JFrame {
 public String tanggal;
+private Connection con;
 
     /**
      * Creates new form Artikel
@@ -20,6 +21,15 @@ public String tanggal;
     public Artikel() {
         initComponents();
         tampil_data();
+    }
+    
+    private void koneksi_database() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Gagal terkoneksi karena" + ex);
+        }
     }
 
     /**
@@ -203,10 +213,13 @@ public String tanggal;
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
         try {
-        String sql =  "INSERT INTO artikel(judul, penulis, kategori, paragraf, tanggal) VALUES (?, ?, ?, ?, ?)";
-        java.sql.Connection conn = program_data.con_db_artikel.koneksiDB();
-        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+//        java.sql.Connection conn = program_data.con_db_artikel.koneksiDB();
+//        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+
+        koneksi_database();
         
+        String sql =  "INSERT INTO artikel(judul, penulis, kategori, paragraf, tanggal) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
         pst.setString(1, judul.getText());
         pst.setString(2, penulis.getText());
         pst.setString(3, kategori.getText());
@@ -231,9 +244,10 @@ public String tanggal;
     tabel.addColumn("Tanggal");
     
     try {
-        Connection conn = program_data.con_db_artikel.koneksiDB();
+//        Connection conn = program_data.con_db_artikel.koneksiDB();
+        koneksi_database();
         String sql = "SELECT * FROM artikel";
-        PreparedStatement pst = conn.prepareStatement(sql);
+        PreparedStatement pst = con.prepareStatement(sql);
         ResultSet rs = pst.executeQuery();
         
         int no = 1;
@@ -252,7 +266,7 @@ public String tanggal;
         // Menutup sumber daya
         rs.close();
         pst.close();
-        conn.close();
+        con.close();
         
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error menampilkan data: " + e.getMessage());
