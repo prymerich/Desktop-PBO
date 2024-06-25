@@ -572,7 +572,6 @@ public class menu_jadwal extends javax.swing.JFrame {
         lb_tanggal.setText(".......");
 
         jButton2.setBackground(new java.awt.Color(16, 74, 132));
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cyber\\Downloads\\Semester 2\\Kuliah\\Pemrograman Berorientasi Obyek\\Tugas Besar\\Desktop-PBO\\program_vital_life\\src\\Icon\\icons8-plus-32.png")); // NOI18N
         jButton2.setMargin(new java.awt.Insets(2, 2, 2, 2));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -600,34 +599,34 @@ public class menu_jadwal extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(1500, 95));
 
         lb_senin_jam1.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lb_senin_jam1.setText("jLabel5");
+        lb_senin_jam1.setText("Bangun tidur");
 
         lb_senin_kegiatan1.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lb_senin_kegiatan1.setText("jLabel5");
+        lb_senin_kegiatan1.setText("06.00");
 
         lb_senin_kegiatan2.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lb_senin_kegiatan2.setText("jLabel5");
+        lb_senin_kegiatan2.setText("06.30");
 
         lb_senin_jam2.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lb_senin_jam2.setText("jLabel5");
+        lb_senin_jam2.setText("Sarapan");
 
         lb_senin_kegiatan3.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lb_senin_kegiatan3.setText("jLabel5");
+        lb_senin_kegiatan3.setText("12.00");
 
         lb_senin_jam3.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lb_senin_jam3.setText("jLabel5");
+        lb_senin_jam3.setText("Makan siang");
 
         lb_senin_jam4.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lb_senin_jam4.setText("jLabel5");
+        lb_senin_jam4.setText("Olahraga");
 
         lb_senin_kegiatan4.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lb_senin_kegiatan4.setText("jLabel5");
+        lb_senin_kegiatan4.setText("16.00");
 
         lb_senin_kegiatan5.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
-        lb_senin_kegiatan5.setText("jLabel5");
+        lb_senin_kegiatan5.setText("19.00");
 
         lb_senin_jam5.setFont(new java.awt.Font("Poppins Light", 0, 12)); // NOI18N
-        lb_senin_jam5.setText("jLabel5");
+        lb_senin_jam5.setText("Makan Malam");
 
         lb_senin_kegiatan6.setFont(new java.awt.Font("Poppins Medium", 0, 14)); // NOI18N
         lb_senin_kegiatan6.setText("jLabel5");
