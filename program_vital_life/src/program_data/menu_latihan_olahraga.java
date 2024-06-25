@@ -189,7 +189,7 @@ public class menu_latihan_olahraga extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        new form_menu_utama().setVisible(true);
+        new menu_utama_user().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void olahraga1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_olahraga1ActionPerformed
