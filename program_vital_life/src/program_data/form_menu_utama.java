@@ -4,6 +4,13 @@
  */
 package program_data;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Cyber
@@ -15,6 +22,7 @@ public class form_menu_utama extends javax.swing.JFrame {
      */
     public form_menu_utama() {
         initComponents();
+        tampil_data();
     }
 
     /**
@@ -28,10 +36,17 @@ public class form_menu_utama extends javax.swing.JFrame {
 
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        textcari = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        lihat = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btn_pola_makan = new javax.swing.JButton();
@@ -75,17 +90,74 @@ public class form_menu_utama extends javax.swing.JFrame {
             .addGap(0, 34, Short.MAX_VALUE)
         );
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel8.setText("Artikel Kesehatan");
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        textcari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textcariActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Cari");
+
+        lihat.setText("Lihat");
+        lihat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lihatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(248, 248, 248))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textcari, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lihat)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(lihat))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,7 +365,7 @@ public class form_menu_utama extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_informasi))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -360,6 +432,97 @@ public class form_menu_utama extends javax.swing.JFrame {
         new menu_informasi().setVisible(true);
     }//GEN-LAST:event_btn_informasiActionPerformed
 
+    private void textcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textcariActionPerformed
+        try {
+        // Mengambil koneksi dari kelas con_db_artikel
+        java.sql.Connection conn = program_data.con_db_artikel.koneksiDB();
+
+        // Query SQL dengan parameter terikat
+        String sql = "SELECT * FROM artikel WHERE no=? OR penulis=?";
+        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+
+        // Mengatur nilai parameter sesuai dengan teks yang dimasukkan di cari.getText()
+        pst.setString(1, textcari.getText());
+        pst.setString(2, textcari.getText());
+
+        // Melakukan eksekusi query dengan menggunakan pst.executeQuery()
+        ResultSet rs = pst.executeQuery();
+
+        // Memeriksa apakah ada hasil yang ditemukan
+        if (rs.next()) {
+            judul.setText(rs.getString("judul"));
+            penulis.setText(rs.getString("penulis"));
+            kategori.setText(rs.getString("kategori"));
+            tgl.setDate(rs.getDate("tanggal"));
+            artikel.setText(rs.getString("paragraf"));
+
+            // Menampilkan pesan bahwa data ditemukan
+            JOptionPane.showMessageDialog(null, "Data artikel: " + textcari.getText() + " ditemukan. Apakah Anda Ingin Mengedit?");
+        } else {
+            // Jika tidak ada hasil yang ditemukan
+            JOptionPane.showMessageDialog(null, "Data tidak ditemukan.");
+        }
+
+    } catch (SQLException e) {
+        // Menangkap kesalahan SQL dan menampilkannya
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        e.printStackTrace();
+    } catch (Exception e) {
+        // Menangkap kesalahan umum dan menampilkannya
+        JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        e.printStackTrace();
+    }
+
+    // Mengatur fokus ke komponen cari setelah eksekusi
+    textcari.requestFocus();
+    }//GEN-LAST:event_textcariActionPerformed
+
+    private void lihatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatActionPerformed
+        int selectedRow = jTable2.getSelectedRow();
+    
+    // Pastikan ada baris yang dipilih
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Pilih artikel terlebih dahulu.");
+        return;
+    }
+    
+    // Ambil nilai paragraf dari kolom artikel
+    String paragraf = (String) jTable2.getValueAt(selectedRow, 3); // Ganti dengan indeks kolom yang sesuai
+    
+    // Tampilkan paragraf dalam JOptionPane sebagai dialog popup
+    JOptionPane.showMessageDialog(this, paragraf, "Isi Paragraf Artikel", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_lihatActionPerformed
+    
+    public void tampil_data() {
+    DefaultTableModel tabel = new DefaultTableModel();
+    tabel.addColumn("NO");
+    tabel.addColumn("judul");
+    tabel.addColumn("penulis");
+    tabel.addColumn("Kategori");
+    tabel.addColumn("Tanggal");
+
+    try (Connection conn = program_data.con_db_artikel.koneksiDB();
+         PreparedStatement pst = conn.prepareStatement("SELECT * FROM artikel");
+         ResultSet rs = pst.executeQuery()) {
+
+        int no = 1;
+        while (rs.next()) {
+            tabel.addRow(new Object[]{
+                no++,
+                rs.getString("judul"),
+                rs.getString("penulis"),
+                rs.getString("kategori"),
+                rs.getDate("tanggal")
+            });
+        }
+
+        jTable2.setModel(tabel);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error menampilkan data: " + e.getMessage());
+        e.printStackTrace();
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -413,10 +576,17 @@ public class form_menu_utama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JButton lihat;
+    private javax.swing.JTextField textcari;
     // End of variables declaration//GEN-END:variables
 }
