@@ -33,12 +33,8 @@ public class menu_pola_makan extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         sarapan = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        s_makanan = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        h_sarapan = new javax.swing.JTextPane();
-        s_minuman = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        h_minuman = new javax.swing.JTextPane();
+        kalori = new javax.swing.JTextPane();
         sarapan1 = new javax.swing.JButton();
         karbohidrat = new javax.swing.JButton();
         protein = new javax.swing.JButton();
@@ -48,6 +44,10 @@ public class menu_pola_makan extends javax.swing.JFrame {
         antioksidan = new javax.swing.JButton();
         serat = new javax.swing.JButton();
         mikromineral = new javax.swing.JButton();
+        makanan = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        minuman = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,31 +105,8 @@ public class menu_pola_makan extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Asupan Nutrisi");
 
-        s_makanan.setBackground(new java.awt.Color(16, 74, 132));
-        s_makanan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        s_makanan.setForeground(new java.awt.Color(255, 255, 255));
-        s_makanan.setText("Makanan");
-        s_makanan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                s_makananActionPerformed(evt);
-            }
-        });
-
-        h_sarapan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jScrollPane2.setViewportView(h_sarapan);
-
-        s_minuman.setBackground(new java.awt.Color(16, 74, 132));
-        s_minuman.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        s_minuman.setForeground(new java.awt.Color(255, 255, 255));
-        s_minuman.setText("Minuman");
-        s_minuman.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                s_minumanActionPerformed(evt);
-            }
-        });
-
-        h_minuman.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jScrollPane3.setViewportView(h_minuman);
+        kalori.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jScrollPane2.setViewportView(kalori);
 
         sarapan1.setBackground(new java.awt.Color(16, 74, 132));
         sarapan1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -221,6 +198,22 @@ public class menu_pola_makan extends javax.swing.JFrame {
             }
         });
 
+        makanan.setForeground(new java.awt.Color(153, 153, 153));
+        makanan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Bubur Ayam", "Oatmeal", "Lontong Sayur", "Nasi uduk", "Salad Buah", "Nasi Pecel", "Nasi Gudeg", "Omelet", "Sereal", "Bubur Sumsum", "Sadnwich", "Pancake" }));
+        makanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                makananActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("Makanan");
+
+        minuman.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Air Putih", "Susu", "Air Lemon", "Air Kelapa", "Kopi Hitam", "Teh Hangat", "Jus Buah" }));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText("Minuman");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -228,22 +221,21 @@ public class menu_pola_makan extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(96, 96, 96)
-                            .addComponent(s_makanan, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(17, 17, 17))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(sarapan, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(s_minuman, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)
+                        .addComponent(sarapan, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(makanan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minuman, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(187, 187, 187)
@@ -275,39 +267,46 @@ public class menu_pola_makan extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(sarapan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(s_makanan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(114, 114, 114)
-                                .addComponent(Lemak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(14, 14, 14)
-                        .addComponent(makromineral, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(mikromineral, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(vitamin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                        .addComponent(serat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(antioksidan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))
+                                .addComponent(sarapan1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(karbohidrat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(protein, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(sarapan1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(karbohidrat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(protein, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(s_minuman, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(Lemak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(makromineral, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(sarapan, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(makanan, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(mikromineral, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(vitamin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(serat, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(antioksidan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 9, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(minuman, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(112, 112, 112))))))
         );
 
         pack();
@@ -322,51 +321,6 @@ public class menu_pola_makan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_sarapanActionPerformed
 
-    private void s_makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_makananActionPerformed
-        Random acak = new Random();
-        String[] words = {
-        "Bubur Ayam",
-        "Oatmeal",
-        "Lontong Sayur",
-        "Nasi uduk",
-        "Salad Buah",
-        "Nasi Pecel",
-        "Nasi Gudeg",
-        "Omelet",
-        "Sereal",
-        "Bubur Sumsum",
-        "Sadnwich",
-        "Pancake"
-        };
-        
-        int randomIndex = acak.nextInt(words.length);
-        String randomWord = words[randomIndex];
-        
-        h_sarapan.setText(String.format(randomWord));
-        
-        
-    }//GEN-LAST:event_s_makananActionPerformed
-
-    private void s_minumanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_minumanActionPerformed
-        Random acak = new Random();
-        String[] words = {
-        "Air Putih",
-        "Susu",
-        "Air Lemon",
-        "Air Kelapa",
-        "Kopi Hitam",
-        "Teh Hangat",
-        "Jus Buah"
-        
-        };
-        
-        int randomIndex = acak.nextInt(words.length);
-        String randomWord = words[randomIndex];
-        
-        h_minuman.setText(String.format(randomWord));
-        
-    }//GEN-LAST:event_s_minumanActionPerformed
-
     private void sarapan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sarapan1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sarapan1ActionPerformed
@@ -375,15 +329,16 @@ public class menu_pola_makan extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(
             null, 
             "Alternatif dari Nasi \n\n"
-                    + "Ubi Jalar \n"
-                    + "Kentang \n"
-                    + "Jagung \n"
-                    + "Oatmeal \n"
-                    + "Quinoa \n"
-                    + "Singkong \n"
-                    + "Beras Merah \n"
-                    + "Beras Hitam \n"
-                    + "Talas",      
+                    + "Nasi| \t 28 gram| 130 Kalori\n"
+                    + "Ubi Jalar| \t 20 gram| 86 Kalori\n"
+                    + "Kentang| \t 17 gram| 77 Kalori\n"
+                    + "Jagung| \t 19 gram| 96 Kalori\n"
+                    + "Oatmeal| \t 66 gram| 389 Kalori\n"
+                    + "Quinoa| \t 21 gram| 120 Kalori\n"
+                    + "Singkong| \t 38 gram| 160 Kalori\n"
+                    + "Beras Merah| \t 23 gram| 110 Kalori\n"
+                    + "Beras Hitam| \t 34 gram| 335 Kalori\n"
+                    + "Talas| \t 27 gram| 142 Kalori",      
             "Karbohidrat", 
             JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_karbohidratActionPerformed
@@ -392,15 +347,23 @@ public class menu_pola_makan extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(
             null, 
             "Alternatif dari Perdagingan \n\n"
-                    + "Tempe \n"
-                    + "Tahu \n"
-                    + "Lentil\n"
-                    + "Edamame \n"
-                    + "Kacang Kedelai \n"
-                    + "Chickpea (Kacang Arab) \n"
-                    + "Rumput Laut \n"
-                    + "Jamur Enoki \n"
-                    + "Talas",      
+                    + "Daging Ayam (tanpa kulit)| \t 31 gram| 165 Kalori\n"
+                    + "Daging Bebek (tanpa kulit)| \t 19 gram| 140 Kalori\n"
+                    + "Daging Kambing| \t 27 gram| 143 Kalori\n"
+                    + "Daging Kerbau| \t 21 gram| 100 Kalori\n"
+                    + "Daging Domba| \t 25 gram| 294 Kalori\n"
+                    + "Daging Sapi (tanpa lemak)| \t 26 gram| 250 Kalori\n"
+                    + "Daging Babi (tanpa lemak)| \t 27 gram| 242 Kalori\n\n"
+                    + "Vegetarian\n\n"
+                    + "Tempe| \t 19 gram| 193 Kalori\n"
+                    + "Tahu| \t 8 gram| 76 Kalori\n"
+                    + "Lentil|\t 9 gram| 116 Kalori\n"
+                    + "Edamame| \t 11 gram| 121 Kalori\n"
+                    + "Kacang Kedelai| \t 36 gram| 446 Kalori\n"
+                    + "Chickpea (Kacang Arab)| \t 19 gram| 164 Kalori \n"
+                    + "Rumput Laut|\t 2 gram| 45 Kalori \n"
+                    + "Jamur Enoki| \t 2.7 gram| 37 Kalori\n"
+                    + "Talas|\t 1.5 gram| 142 Kalori ",      
             "Protein", 
             JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_proteinActionPerformed
@@ -568,6 +531,53 @@ public class menu_pola_makan extends javax.swing.JFrame {
             JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_mikromineralActionPerformed
 
+    private void makananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makananActionPerformed
+        String sarapan = (String) makanan.getSelectedItem();
+        
+        if (sarapan.equals("...")){
+        kalori.setText(String.format("..."));
+        }
+        else if (sarapan.equals("Bubur Ayam")){
+        kalori.setText(String.valueOf("200-300 Kalori"));
+        }
+        else if (sarapan.equals("Oatmeal")){
+        kalori.setText(String.format("150-250 Kalori"));
+        }
+        else if (sarapan.equals("Lontong Sayur")){
+        kalori.setText(String.format("300-400 Kalori"));
+        }
+        else if (sarapan.equals("Nasi Uduk")){
+        kalori.setText(String.format("450-550 Kalori"));
+        }
+        else if (sarapan.equals("Salad Buah")){
+        kalori.setText(String.format("100-200 Kalori"));
+        }
+        else if (sarapan.equals("Nasi Pecel")){
+        kalori.setText(String.format("400-500 Kalori"));
+        }
+        else if (sarapan.equals("Nasi Gudeg")){
+        kalori.setText(String.format("500-600 Kalori"));
+        }
+        else if (sarapan.equals("Omelet")){
+        kalori.setText(String.format("150-250 Kalori"));
+        }
+        else if (sarapan.equals("Sereal")){
+        kalori.setText(String.format("100-200 Kalori"));
+        }
+        else if (sarapan.equals("Bubur Sumsum")){
+        kalori.setText(String.format("200-300 Kalori"));
+        }
+        else if (sarapan.equals("Sandwitch")){
+        kalori.setText(String.format("250-400 Kalori"));
+        }
+        else if (sarapan.equals("Pancake")){
+        kalori.setText(String.format("200-300 Kalori"));
+        }
+        else{
+        kalori.setText(String.format("100"));
+        }
+    }//GEN-LAST:event_makananActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -606,20 +616,20 @@ public class menu_pola_makan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Lemak;
     private javax.swing.JButton antioksidan;
-    private javax.swing.JTextPane h_minuman;
-    private javax.swing.JTextPane h_sarapan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextPane kalori;
     private javax.swing.JButton karbohidrat;
+    private javax.swing.JComboBox<String> makanan;
     private javax.swing.JButton makromineral;
     private javax.swing.JButton mikromineral;
+    private javax.swing.JComboBox<String> minuman;
     private javax.swing.JButton protein;
-    private javax.swing.JButton s_makanan;
-    private javax.swing.JButton s_minuman;
     private javax.swing.JButton sarapan;
     private javax.swing.JButton sarapan1;
     private javax.swing.JButton serat;
