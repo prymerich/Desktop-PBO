@@ -10,6 +10,8 @@ import java.util.Locale;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.*;
+import java.util.concurrent.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,6 +24,7 @@ import javax.swing.JOptionPane;
 public class menu_jadwal extends javax.swing.JFrame {
     private int userId;
     private Connection con;
+    private alarm_jadwal alarm_service;
 
     /**
      * Creates new form menu_jadwal
@@ -31,6 +34,8 @@ public class menu_jadwal extends javax.swing.JFrame {
         tanggal_hari_ini();
         userId = Session.getUserId();
         koneksi_database();
+        
+        alarm_service = new alarm_jadwal();
         
         tampilkan_jadwal("Senin");
         tampilkan_jadwal("Selasa");
@@ -60,7 +65,10 @@ public class menu_jadwal extends javax.swing.JFrame {
             ps.setString(2, hari);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    jadwal.add(new Schedule(rs.getTime("Waktu"), rs.getString("kegiatan")));
+                    Schedule schedule = new Schedule(rs.getTime("Waktu"), rs.getString("kegiatan"));
+                    jadwal.add(schedule);
+                    alarm_service.tambah_reminder(schedule, hari);
+//                    jadwal.add(new Schedule(rs.getTime("Waktu"), rs.getString("kegiatan")));
                 }
             }
         } catch (SQLException e) {

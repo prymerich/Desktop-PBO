@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class Artikel extends javax.swing.JFrame {
 public String tanggal;
+private Connection con;
 
     /**
      * Creates new form Artikel
@@ -20,6 +21,15 @@ public String tanggal;
     public Artikel() {
         initComponents();
         tampil_data();
+    }
+    
+    private void koneksi_database() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/login_db", "root", "");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Gagal terkoneksi karena" + ex);
+        }
     }
 
     /**
@@ -238,6 +248,7 @@ public String tanggal;
     }//GEN-LAST:event_kategoriActionPerformed
 
     private void tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahActionPerformed
+<<<<<<< HEAD
     try{
             String sql="insert into artikel values('"
                     +no.getText()+"','"
@@ -256,6 +267,30 @@ public String tanggal;
             JOptionPane.showMessageDialog(null, "Gagal disimpan");
             System.out.println(e.getMessage());
         }
+=======
+        try {
+//        java.sql.Connection conn = program_data.con_db_artikel.koneksiDB();
+//        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+
+        koneksi_database();
+        
+        String sql =  "INSERT INTO artikel(judul, penulis, kategori, paragraf, tanggal) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pst = con.prepareStatement(sql);
+        pst.setString(1, judul.getText());
+        pst.setString(2, penulis.getText());
+        pst.setString(3, kategori.getText());
+        pst.setString(4, artikel.getText());
+        pst.setString(5, tanggal); // Pastikan tanggal adalah format yang sesuai
+        
+        pst.executeUpdate();
+        
+        JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+        tampil_data();
+    } catch(Exception e) {
+        JOptionPane.showMessageDialog(null, "Gagal disimpan: " + e.getMessage());
+        System.out.println(e.getMessage());
+    }
+>>>>>>> b78afdf645a82c2a35f576e639576c90c131e544
 }
     public void tampil_data() {
     DefaultTableModel tabel = new DefaultTableModel();
@@ -264,11 +299,22 @@ public String tanggal;
     tabel.addColumn("penulis");
     tabel.addColumn("Kategori");
     tabel.addColumn("Tanggal");
+<<<<<<< HEAD
 
     try (Connection conn = program_data.con_db_artikel.koneksiDB();
          PreparedStatement pst = conn.prepareStatement("SELECT * FROM artikel");
          ResultSet rs = pst.executeQuery()) {
 
+=======
+    
+    try {
+//        Connection conn = program_data.con_db_artikel.koneksiDB();
+        koneksi_database();
+        String sql = "SELECT * FROM artikel";
+        PreparedStatement pst = con.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
+        
+>>>>>>> b78afdf645a82c2a35f576e639576c90c131e544
         int no = 1;
         while (rs.next()) {
             tabel.addRow(new Object[]{
@@ -281,7 +327,16 @@ public String tanggal;
         }
 
         jTable1.setModel(tabel);
+<<<<<<< HEAD
 
+=======
+        
+        // Menutup sumber daya
+        rs.close();
+        pst.close();
+        con.close();
+        
+>>>>>>> b78afdf645a82c2a35f576e639576c90c131e544
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error menampilkan data: " + e.getMessage());
         e.printStackTrace();
