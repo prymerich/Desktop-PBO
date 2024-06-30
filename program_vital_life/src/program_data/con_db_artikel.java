@@ -15,16 +15,14 @@ public class con_db_artikel {
     private static Connection mysqlkonek;
     public static Connection koneksiDB()throws SQLException{
         if(mysqlkonek==null){
-            try{
-                String DB = "jdbc:mysql://localhost:3306/program_hidup_sehat";
-                String user = "root";
-                String pass = "";
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-                mysqlkonek=(Connection)DriverManager.getConnection(DB,user,pass);
-                
-            }catch (Exception e){
-                
-            }
+            try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/program_hidup_sehat", "root", "");
+        return conn;
+    } catch (ClassNotFoundException | SQLException e) {
+        JOptionPane.showMessageDialog(null, "Koneksi ke database gagal: " + e.getMessage());
+        throw new RuntimeException(e);
+    }
         }return mysqlkonek;
     }
 }
