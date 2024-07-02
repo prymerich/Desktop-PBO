@@ -60,8 +60,6 @@ public class form_menu_utama extends javax.swing.JFrame {
         btn_cek_lemak = new javax.swing.JButton();
         btn_kegiatan = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        btn_informasi = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
@@ -177,7 +175,7 @@ public class form_menu_utama extends javax.swing.JFrame {
         btn_pola_makan.setBackground(new java.awt.Color(16, 16, 132));
         btn_pola_makan.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         btn_pola_makan.setForeground(new java.awt.Color(255, 255, 255));
-        btn_pola_makan.setText("Atur Pola Makan");
+        btn_pola_makan.setText("Pola Makan");
         btn_pola_makan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_pola_makan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,7 +197,7 @@ public class form_menu_utama extends javax.swing.JFrame {
         btn_pola_tidur.setBackground(new java.awt.Color(16, 16, 132));
         btn_pola_tidur.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         btn_pola_tidur.setForeground(new java.awt.Color(255, 255, 255));
-        btn_pola_tidur.setText("Jaga Pola Tidur");
+        btn_pola_tidur.setText("Cek Pola Tidur");
         btn_pola_tidur.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btn_pola_tidur.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btn_pola_tidur.setIconTextGap(0);
@@ -273,24 +271,10 @@ public class form_menu_utama extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ICON");
 
-        btn_informasi.setBackground(new java.awt.Color(16, 16, 132));
-        btn_informasi.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        btn_informasi.setForeground(new java.awt.Color(255, 255, 255));
-        btn_informasi.setText("Cari Informasi");
-        btn_informasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btn_informasi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_informasiActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("ICON");
-
         jLabel7.setFont(new java.awt.Font("Poppins Medium", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("ICON");
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Cyber\\Downloads\\Semester 2\\Kuliah\\Pemrograman Berorientasi Obyek\\Tugas Besar\\Desktop-PBO\\program_vital_life\\src\\Icon\\Asset 1.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -305,8 +289,7 @@ public class form_menu_utama extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel4))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
+                            .addComponent(jLabel5))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -316,7 +299,6 @@ public class form_menu_utama extends javax.swing.JFrame {
                                 .addComponent(btn_cek_lemak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_cek_imt, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btn_informasi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_kegiatan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btn_jadwal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -361,10 +343,6 @@ public class form_menu_utama extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_kegiatan))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_informasi))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -426,11 +404,6 @@ public class form_menu_utama extends javax.swing.JFrame {
         this.dispose();
         new menu_rekomendasi_kegiatan().setVisible(true);
     }//GEN-LAST:event_btn_kegiatanActionPerformed
-
-    private void btn_informasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informasiActionPerformed
-        this.dispose();
-        new menu_informasi().setVisible(true);
-    }//GEN-LAST:event_btn_informasiActionPerformed
 
     private void textcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textcariActionPerformed
         try {
@@ -561,7 +534,6 @@ public class form_menu_utama extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cek_imt;
     private javax.swing.JButton btn_cek_lemak;
-    private javax.swing.JButton btn_informasi;
     private javax.swing.JButton btn_jadwal;
     private javax.swing.JButton btn_kegiatan;
     private javax.swing.JButton btn_olahraga;
@@ -574,7 +546,6 @@ public class form_menu_utama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
